@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificación de Código</title>
+  <link rel="stylesheet" href="https://preview.tabler.io/dist/css/tabler.min.css">
+  <script src="https://preview.tabler.io/dist/js/tabler.min.js" defer></script>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="script.js" defer></script> <!-- Archivo JS externo -->
+</head>
+<body class="theme-dark">
+  <div class="page">
+    <div class="page-single">
+      <div class="container-tight d-flex justify-content-center align-items-center"> <!-- Centrar el card -->
+        <div class="card card-lg" style="width: 500px; max-width: 100%;"> <!-- Card más ancho -->
+          <div class="card-body text-center">
+            <!-- Logo -->
+            <div class="logo-container mb-4">
+              <img id="logo" src="Kioscos_White.png" alt="Logo" width="160" height="260" class="">
+            </div>
+
+            <!-- Mensaje de Envío -->
+            <div class="d-flex align-items-center justify-content-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail text-icon" width="128" height="128" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transform: scale(3);">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
+                    <path d="M3 7l9 6l9 -6"></path>
+                  </svg>
+              <p class="text-muted mb-0 ms-3">El código de verificación ha sido enviado al correo: <strong class="text-bold">usuario@example.com</strong>.</p>
+            </div>
+
+            <!-- Temporizador Circular -->
+            <div class="circular-timer d-inline-block mb-4" id="circular-timer">
+              <svg class="timer-circle" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                <circle class="timer-path" cx="50" cy="50" r="46" fill="none" stroke="#ffffff" stroke-width="6" stroke-dasharray="289.03" stroke-dashoffset="0"></circle>
+              </svg>
+              <span class="timer-text" id="timer-text">5:00</span>
+            </div>
+
+            <!-- Texto Encima de los Campos de Código -->
+            <p class="text-muted mb-2">Ingresa aquí el código de verificación</p>
+
+            <!-- Formulario de Código -->
+            <form action="#" method="post" autocomplete="off">
+              <div class="mb-3">
+                <div class="d-flex justify-content-center gap-2">
+                  <input type="text" class="form-control code-input" maxlength="1" required>
+                  <input type="text" class="form-control code-input" maxlength="1" required>
+                  <input type="text" class="form-control code-input" maxlength="1" required>
+                  <input type="text" class="form-control code-input" maxlength="1" required>
+                  <input type="text" class="form-control code-input" maxlength="1" required>
+                  <input type="text" class="form-control code-input" maxlength="1" required>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <button type="button" class="btn btn-outline-secondary" onclick="resendCode()">
+                  Reenviar código
+                </button>
+                <button type="submit" class="btn btn-primary ms-3">
+                  Verificar Código
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="theme-switch">
+    <!-- Botón de Cambio de Tema -->
+    <button class="btn btn-icon btn-pill" onclick="toggleTheme()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+      </svg>
+    </button>
+  
+    <!-- Botón para Redirigir a Otra Página -->
+    <a href="Index.html" class="btn btn-icon btn-pill mt-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M5 12l14 0"></path>
+        <path d="M13 18l6 -6"></path>
+        <path d="M13 6l6 6"></path>
+      </svg>
+    </a>
+  </div>
+</body>
+</html>

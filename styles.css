@@ -1,0 +1,349 @@
+/* Estilos generales */
+body {
+    background: #161c2d;
+    overflow: hidden;
+    transition: background 0.3s ease;
+  }
+  
+  .theme-light body {
+    background: #f8f9fa; /* Fondo gris claro para el tema claro */
+  }
+  
+  #particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: none;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .theme-light .card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    border: none;
+    color: #000000;
+  }
+  
+  .theme-switch {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+  }
+  
+  /* Estilos para los campos de entrada en modo oscuro */
+  .theme-dark .form-control {
+    color-scheme: dark;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+  
+  /* Estilos para los campos de entrada en modo claro */
+  .theme-light .form-control {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #000000;
+  }
+  
+  /* Estilos para los campos enfocados en modo oscuro */
+  .theme-dark .form-control:focus {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.15);
+  }
+  
+  /* Estilos para los campos enfocados en modo claro */
+  .theme-light .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.15);
+  }
+  
+  /* Estilos para las etiquetas en modo oscuro */
+  .theme-dark .form-label, .theme-dark .card-title,
+  .theme-dark .form-check-label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Estilos para las etiquetas en modo claro */
+  .theme-light .form-label, .theme-light .card-title,
+  .theme-light .form-check-label {
+    color: rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Estilos para los placeholders en modo oscuro */
+  .theme-dark .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Estilos para los placeholders en modo claro */
+  .theme-light .form-control::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Estilos para los checkboxes en modo oscuro */
+  .theme-dark .form-check-input {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Estilos para los checkboxes en modo claro */
+  .theme-light .form-check-input {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilos para los checkboxes marcados en ambos modos */
+  .theme-dark .form-check-input:checked,
+  .theme-light .form-check-input:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+  
+  /* Contenedor del logo */
+  .logo-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+/* Contenedor del label y el enlace */
+.label-container {
+  display: flex;
+  justify-content: space-between; /* Alinea el label a la izquierda y el enlace a la derecha */
+  align-items: center; /* Alinea verticalmente los elementos */
+}
+
+/* Estilo para el label */
+.label-container .form-label, .form-check-label {
+  margin: 0; /* Elimina cualquier margen predeterminado */
+  text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+}
+
+/* Estilo para el enlace */
+.label-container .form-label-description a {
+  color: #3b82f6; /* Color del enlace */
+  text-decoration: none; /* Elimina el subrayado predeterminado */
+  font-size: small;
+}
+
+/* Hover para el enlace */
+.label-container .form-label-description a:hover {
+  text-decoration: underline; /* Agrega un subrayado al pasar el mouse */
+}
+
+
+
+  /* Animations */
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Main styles */
+body {
+  background: #161c2d;
+  color: #999;
+  font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+  text-align: center;
+  /* img size is 50x50 */
+  background: url("bg_Dark.png") repeat 0 0;
+
+  -webkit-animation: bg-scrolling-reverse 0.92s infinite; /* Safari 4+ */
+  -moz-animation: bg-scrolling-reverse 0.92s infinite; /* Fx 5+ */
+  -o-animation: bg-scrolling-reverse 0.92s infinite; /* Opera 12+ */
+  animation: bg-scrolling-reverse 0.92s infinite; /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+
+/* Code Verification */
+/* Asegurar que el card tenga un ancho fijo de 500px */
+.card-lg {
+  width: 500px !important; /* Forzar el ancho */
+  max-width: 100%; /* Para evitar desbordamiento en pantallas pequeñas */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+
+/* Centrar el card horizontal y verticalmente */
+.container-tight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Altura completa para centrado vertical */
+}
+
+/* Estilos para el temporizador circular */
+.circular-timer {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto; /* Centrar el temporizador */
+}
+
+.timer-circle {
+  transform: rotate(-90deg);
+  transition: all 0.5s ease;
+}
+
+.timer-path {
+  stroke-dasharray: 289.03; /* Circunferencia del círculo */
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Estilos para los campos de código */
+.code-input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.code-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Botón de reenviar código estilo Tabler Dark */
+.btn-outline-secondary {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+}
+
+.btn-outline-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Espaciado entre botones */
+.ms-3 {
+  margin-left: 1rem; /* Espacio entre los botones */
+}
+
+/* Estilos para el tema claro */
+.theme-light {
+  background: #f8f9fa; /* Fondo claro */
+  color: #000000; /* Texto oscuro */
+}
+
+.theme-light .text-bold, .theme-light .text-icon{
+  color: #000;
+}
+.text-bold, .text-icon{
+  color: #fff;
+}
+
+
+/* Círculo del temporizador en tema claro */
+.theme-light .timer-path {
+  stroke: #3b82f6; /* Borde azul */
+}
+
+.theme-light .timer-text {
+  color: #3b82f6; /* Números azules */
+}
+
+/* Botón de reenviar código en tema claro */
+.theme-light .btn-outline-secondary {
+  border-color: rgba(0, 0, 0, 0.3); /* Borde gris oscuro */
+  color: #000000; /* Texto negro */
+}
+
+.theme-light .btn-outline-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Fondo ligeramente oscuro al pasar el mouse */
+  border-color: rgba(0, 0, 0, 0.5); /* Borde más oscuro al pasar el mouse */
+}
+
+/* Correo electrónico en tema claro */
+.theme-light .text-white {
+  color: #000000; /* Cambiar texto blanco a negro */
+}
+
+/* Asegurar que los botones estén alineados correctamente */
+.theme-switch {
+  display: flex;
+  flex-direction: column; /* Apilar los botones verticalmente */
+  align-items: center; /* Centrar los botones horizontalmente */
+}
+
+/* Estilos para los botones */
+.theme-switch .btn {
+  display: flex; /* Usar Flexbox para centrar el contenido */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  width: 40px; /* Ancho fijo */
+  height: 40px; /* Altura fija */
+  margin-bottom: 0.5rem; /* Espaciado entre los botones */
+  padding: 0; /* Eliminar paddings innecesarios */
+}
+
+/* Asegurar que los íconos estén centrados dentro de los botones */
+.theme-switch .icon {
+  width: 24px; /* Tamaño del ícono */
+  height: 24px; /* Tamaño del ícono */
+}
