@@ -4,87 +4,203 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verificación de Código</title>
-  <link rel="stylesheet" href="https://preview.tabler.io/dist/css/tabler.min.css">
-  <script src="https://preview.tabler.io/dist/js/tabler.min.js" defer></script>
-  <link rel="stylesheet" href="styles.css"/>
-  <script src="script.js" defer></script> <!-- Archivo JS externo -->
+  <!-- Tabler Core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+  <style>
+    /* Estilos para centrar el texto dentro del círculo */
+    .circular-timer {
+      position: relative;
+      display: inline-block;
+    }
+
+    .timer-circle {
+      transform: rotate(-90deg); /* Rotar el círculo para que comience desde arriba */
+    }
+
+    .timer-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.2rem; /* Tamaño reducido del texto */
+      font-weight: bold;
+      z-index: 10;
+    }
+
+    /* Colores del texto según el tema */
+    body[data-bs-theme="dark"] .timer-text {
+      color: #ffffff; /* Blanco en modo oscuro */
+    }
+
+    body[data-bs-theme="light"] .timer-text {
+      color: #0d6efd; /* Azul en modo claro */
+    }
+
+    /* Colores del círculo según el tema */
+    body[data-bs-theme="dark"] .timer-path {
+      stroke: #ffffff; /* Blanco en modo oscuro */
+    }
+
+    body[data-bs-theme="light"] .timer-path {
+      stroke: #0d6efd; /* Azul en modo claro */
+    }
+
+    /* Estilos personalizados para los campos de entrada */
+    .code-input {
+      width: 50px; /* Anchura más grande */
+      height: 60px; /* Altura más grande */
+      font-size: 1.4rem; /* Tamaño de fuente más grande */
+      text-align: center;
+      margin: 0 5px; /* Espaciado entre los campos */
+    }
+  </style>
 </head>
 <body class="theme-dark">
-  <div class="page">
-    <div class="page-single">
-      <div class="container-tight d-flex justify-content-center align-items-center"> <!-- Centrar el card -->
-        <div class="card card-lg" style="width: 500px; max-width: 100%;"> <!-- Card más ancho -->
-          <div class="card-body text-center">
-            <!-- Logo -->
-            <div class="logo-container mb-4">
-              <img id="logo" src="Kioscos_White.png" alt="Logo" width="160" height="260" class="">
-            </div>
-
-            <!-- Mensaje de Envío -->
-            <div class="d-flex align-items-center justify-content-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail text-icon" width="128" height="128" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transform: scale(3);">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
-                    <path d="M3 7l9 6l9 -6"></path>
-                  </svg>
-              <p class="text-muted mb-0 ms-3">El código de verificación ha sido enviado al correo: <strong class="text-bold">usuario@example.com</strong>.</p>
-            </div>
-
-            <!-- Temporizador Circular -->
-            <div class="circular-timer d-inline-block mb-4" id="circular-timer">
-              <svg class="timer-circle" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                <circle class="timer-path" cx="50" cy="50" r="46" fill="none" stroke="#ffffff" stroke-width="6" stroke-dasharray="289.03" stroke-dashoffset="0"></circle>
-              </svg>
-              <span class="timer-text" id="timer-text">5:00</span>
-            </div>
-
-            <!-- Texto Encima de los Campos de Código -->
-            <p class="text-muted mb-2">Ingresa aquí el código de verificación</p>
-
-            <!-- Formulario de Código -->
-            <form action="#" method="post" autocomplete="off">
-              <div class="mb-3">
-                <div class="d-flex justify-content-center gap-2">
-                  <input type="text" class="form-control code-input" maxlength="1" required>
-                  <input type="text" class="form-control code-input" maxlength="1" required>
-                  <input type="text" class="form-control code-input" maxlength="1" required>
-                  <input type="text" class="form-control code-input" maxlength="1" required>
-                  <input type="text" class="form-control code-input" maxlength="1" required>
-                  <input type="text" class="form-control code-input" maxlength="1" required>
-                </div>
-              </div>
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <button type="button" class="btn btn-outline-secondary" onclick="resendCode()">
-                  Reenviar código
-                </button>
-                <button type="submit" class="btn btn-primary ms-3">
-                  Verificar Código
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="theme-switch">
-    <!-- Botón de Cambio de Tema -->
-    <button class="btn btn-icon btn-pill" onclick="toggleTheme()">
+  <!-- Botón de Cambio de Tema Flotante -->
+  <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <button class="btn btn-icon" id="theme-toggle">
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
         <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
       </svg>
     </button>
-  
-    <!-- Botón para Redirigir a Otra Página -->
-    <a href="index.html" class="btn btn-icon btn-pill mt-2">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M5 12l14 0"></path>
-        <path d="M13 18l6 -6"></path>
-        <path d="M13 6l6 6"></path>
-      </svg>
-    </a>
   </div>
+
+  <div class="page page-center">
+    <div class="container container-tight py-4">
+      <div class="text-center mb-4">
+        <!-- Logo -->
+        <img src="Kioscos_White.png" alt="Logo" id="AppLogo" width="180">
+      </div>
+      <div class="card card-md">
+        <div class="card-body text-center">
+          <!-- Título -->
+          <h2 class="mb-4">Código de Autenticación</h2>
+
+          <!-- Mensaje de Envío -->
+          <div class="d-flex align-items-center justify-content-center mb-4">
+            <p class="mb-0 ms-3">El código de verificación ha sido enviado al correo: <strong class="text-bold">usuario@example.com</strong>.</p>
+          </div>
+
+          <!-- Temporizador Circular -->
+          <div class="circular-timer d-inline-block mb-4" id="circular-timer">
+            <svg class="timer-circle" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+              <circle class="timer-path" cx="50" cy="50" r="45" fill="none" stroke="#ffffff" stroke-width="6" stroke-dasharray="282.74" stroke-dashoffset="0"></circle>
+            </svg>
+            <span class="timer-text" id="timer-text">5:00</span>
+          </div>
+
+          <!-- Texto Encima de los Campos de Código -->
+          <p class="mb-1">Ingresa aquí el código de verificación</p>
+
+          <!-- Formulario de Código -->
+          <form action="#" method="post" autocomplete="off">
+            <div class="mb-3">
+              <div class="d-flex justify-content-center gap-2">
+                <input type="text" class="form-control code-input m-0" maxlength="1" required>
+                <input type="text" class="form-control code-input m-0" maxlength="1" required>
+                <input type="text" class="form-control code-input ms-0 me-3" maxlength="1" required>
+                <input type="text" class="form-control code-input me-0 ms-3" maxlength="1" required>
+                <input type="text" class="form-control code-input m-0" maxlength="1" required>
+                <input type="text" class="form-control code-input m-0" maxlength="1" required>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3 gap-2">
+              <button type="button" class="btn btn-outline-secondary flex-grow-1" onclick="resendCode()">
+                Reenviar código
+              </button>
+              <button type="submit" class="btn btn-primary flex-grow-1">
+                Verificar Código
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabler Core JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+  <script>
+    // Temporizador de 5 minutos
+    let timeLeft = 300; // 5 minutos en segundos
+    const timerText = document.getElementById('timer-text');
+    const timerPath = document.querySelector('.timer-path');
+
+    function updateTimer() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerText.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+      // Actualizar el progreso del círculo
+      const progress = (timeLeft / 300) * 282.74; // Usar la nueva circunferencia
+      timerPath.style.strokeDashoffset = 282.74 - progress;
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        timerText.textContent = "¡Tiempo expirado!";
+        timerPath.style.strokeDashoffset = 351.86; // Reiniciar el círculo
+      } else {
+        timeLeft--;
+      }
+    }
+
+    let timerInterval = setInterval(updateTimer, 1000);
+
+    // Función para reenviar el código
+    function resendCode() {
+      alert("El código ha sido reenviado.");
+      timeLeft = 300; // Reiniciar el temporizador
+      clearInterval(timerInterval);
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    // Autocompletar campos de código
+    document.querySelectorAll('.code-input').forEach((input, index, inputs) => {
+      input.addEventListener('input', (e) => {
+        if (e.target.value.length === 1 && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && index > 0 && e.target.value.length === 0) {
+          inputs[index - 1].focus();
+        }
+      });
+    });
+
+    // Cambio de tema
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const logo = document.getElementById('AppLogo');
+
+      // Verificar si hay un tema guardado
+      const savedTheme = localStorage.getItem('tabler-theme');
+      if (savedTheme === 'dark') {
+        document.body.setAttribute('data-bs-theme', 'dark');
+        logo.src = 'Kioscos_White.png';
+      } else {
+        document.body.setAttribute('data-bs-theme', 'light');
+        logo.src = 'Kioscos_Black.png';
+      }
+
+      // Evento para cambiar el tema
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.getAttribute('data-bs-theme');
+        const isDark = currentTheme === 'dark';
+
+        if (isDark) {
+          document.body.setAttribute('data-bs-theme', 'light');
+          localStorage.setItem('tabler-theme', 'light');
+          logo.src = 'Kioscos_Black.png';
+        } else {
+          document.body.setAttribute('data-bs-theme', 'dark');
+          localStorage.setItem('tabler-theme', 'dark');
+          logo.src = 'Kioscos_White.png';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
