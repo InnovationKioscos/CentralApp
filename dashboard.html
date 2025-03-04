@@ -13,6 +13,17 @@
 
   <!-- Fuentes de Google -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .ti {
+      font-size: 20px; /* Tamaño base para todos los íconos */
+      font-weight: lighter;
+    }
+    .ft-Comfortaa{
+        font-family: 'Comfortaa', cursive;
+    }
+  </style>
 </head>
 <body>
   <!-- Barra Superior (Header) -->
@@ -25,7 +36,7 @@
       <div class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
         <div class="d-flex align-items-center justify-content-center">
             <img src="IconoK.png" alt="logo" width="50">
-            <p class="mb-0 ms-3"> Central</p>
+            <p class="mb-0 ms-4 mt-1 ft-Comfortaa"> Central</p>
           </div>
       </div>
       <!-- END NAVBAR LOGO -->
@@ -53,7 +64,7 @@
                 <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"></path>
                 <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
               </svg>
-              <span class="badge bg-red"></span>
+              <span class="badge bg-red d-none"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
               <div class="card">
@@ -143,10 +154,10 @@
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow" data-bs-theme="light">
-            <a href="./profile.html" class="dropdown-item">Profile</a>
+            <a href="./profile.html" class="dropdown-item"><i class="ti ti-user me-2"></i>Perfil</a>
             <div class="dropdown-divider"></div>
-            <a href="./settings.html" class="dropdown-item">Settings</a>
-            <a href="./sign-in.html" class="dropdown-item">Logout</a>
+            <a href="./settings.html" class="dropdown-item"><i class="ti ti-settings me-2"></i>Ajustes</a>
+            <a href="./sign-in.html" class="dropdown-item"><i class="ti ti-logout me-2"></i>Salir</a>
           </div>
         </div>
       </div>
