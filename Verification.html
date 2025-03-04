@@ -6,6 +6,8 @@
   <title>Verificación de Código</title>
   <!-- Tabler Core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <style>
     /* Estilos para centrar el texto dentro del círculo */
     .circular-timer {
@@ -52,6 +54,54 @@
       font-size: 1.4rem; /* Tamaño de fuente más grande */
       text-align: center;
       margin: 0 5px; /* Espaciado entre los campos */
+    }
+
+    
+
+    /* Estilo del div flotante */
+    .floating-div {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+      padding: 8px 16px;
+      border-radius: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0.3; /* Opacidad inicial */
+      transition: opacity 0.3s ease; /* Transición suave */
+    }
+
+    /* Efecto de opacidad al pasar el cursor */
+    .floating-div:hover {
+      opacity: 1;
+    }
+
+    /* Estilo de los botones */
+    .floating-div a {
+      text-decoration: none;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 10px;
+      font-size: 12px;
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Íconos */
+    .floating-div a i {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    /* Hover en los botones */
+    .floating-div a:hover {
+      opacity: 1;
     }
   </style>
 </head>
@@ -117,6 +167,26 @@
         </div>
       </div>
     </div>
+  </div>
+  <!-- Div Flotante -->
+  <div class="floating-div">
+    <!-- Botón Login -->
+    <a href="index.html">
+      <i class="ti ti-login"></i>
+      Login
+    </a>
+
+    <!-- Botón Verification -->
+    <a href="verification.html">
+      <i class="ti ti-checkup-list"></i>
+      Verification
+    </a>
+
+    <!-- Botón Dashboard -->
+    <a href="dashboard.html">
+      <i class="ti ti-dashboard"></i>
+      Dashboard
+    </a>
   </div>
 
   <!-- Tabler Core JS -->
